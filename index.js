@@ -1,7 +1,8 @@
 const express = require("express");
 const connectMongoDB = require("./connect");
 const ejs = require("ejs");
-const path = require("path")
+const path = require("path");
+const staticRoute = require("./routes/static.route");
 
 // Import statement end
 
@@ -19,6 +20,9 @@ app.set("views", path.resolve("./views"))
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Middlewares with route
+app.use("/", staticRoute)
 
 app.listen(PORT, () => {
   console.log(`Server started at http://localhost:${PORT}`);
