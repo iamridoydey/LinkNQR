@@ -4,6 +4,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser")
 const staticRoute = require("./routes/static.route");
 const userRoute = require("./routes/user.route");
+const urlRoute = require("./routes/url.route");
+const { validUser } = require("./middlewares/user.auth");
 
 // Import statement end
 
@@ -24,8 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Middlewares with route
-app.use("/", userRoute)
 app.use("/", staticRoute)
+app.use("/", userRoute)
+app.use("/", validUser, urlRoute)
 
 
 app.listen(PORT, () => {

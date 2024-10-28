@@ -6,10 +6,6 @@ staticRoute.get("/", async (req, res)=>{
   return res.render("home");
 })
 
-// GET request for analytics page
-staticRoute.get("/analytics", async (req, res) => {
-  return res.render("analytics");
-});
 
 // GET request for signup page
 staticRoute.get("/signup", async (req, res) => {
