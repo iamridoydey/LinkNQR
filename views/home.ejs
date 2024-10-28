@@ -41,13 +41,19 @@
         <section class="form_container">
           <form action="/" method="post" class="url_form">
             <label for="url" class="form_label">Paste Your Long URL</label>
-            <input type="text" name="url" placeholder="URL" class="url_input" />
+            <input
+              type="url"
+              name="url"
+              placeholder="URL"
+              class="url_input"
+              required
+            />
             <button type="submit" class="submit_button">Get Your Link 🠲</button>
           </form>
         </section>
 
+        <% if (typeof url !== "undefined") { %>
         <section class="created_url_container">
-          <% if (typeof url !== "undefined") { %>
           <div class="url_display">
             <input
               type="text"
@@ -59,8 +65,8 @@
             <button class="copy_button" onclick="copyUrl()">Copy</button>
           </div>
           <p class="copy_message" id="copyMessage">URL copied!</p>
-          <% } %>
         </section>
+        <% } %>
       </main>
     </div>
 
