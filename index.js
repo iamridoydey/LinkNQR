@@ -1,4 +1,5 @@
 require("dotenv").config({ path: "./.env" });
+const cors = require("cors");
 const express = require("express");
 const connectMongoDB = require("./connect");
 const path = require("path");
@@ -19,6 +20,7 @@ const app = express();
 
 // Set Up views (ejs)
 // Serve static files from the "public" directory
+app.use(cors())
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
