@@ -13,7 +13,7 @@ urlRoute.post("/", handleOnPost)
 urlRoute.get("/:shortId", redirectToOriginalUrl);
 
 // GET request for analytics page
-urlRoute.get("urls/analytics", getAnalytics);
+urlRoute.get("/urls/analytics", getAnalytics);
 
 
 module.exports = urlRoute;

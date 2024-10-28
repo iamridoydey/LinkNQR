@@ -86,13 +86,15 @@ async function redirectToOriginalUrl(req, res) {
 
 async function getAnalytics(req, res) {
   const user = req.user;
+  console.log(user);
   // If the user is not valid
-  if (!user) return res.render("login");
+  if (!user) return res.render("/login");
 
   try {
     // Find all the urls for that user
     const allUrl = await UrlModel.find({ createdBy: user._id });
-    return res.render("analytics", { urls: allUrl });
+    return res.render("analytics", { urls: allUrl , domain: process.env.DOMAIN});
+
   } catch (err) {
     console.error("Error occurred while fetching analytics:", err); // Log error
     return res.render("analytics", { info: "Error Fetching Analytics" });

@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkNQR/Analytics</title>
-</head>
-<body>
-  <h2>Analytics</h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/analytics.style.css" />
+    <title>LinkNQR | Analytics</title>
+  </head>
+  <body>
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs"><a href="/">Home</a> > Analytics</div>
+
+    <!-- Centered Title -->
+    <h2 style="text-align: center; color: #4a90e2">Analytics</h2>
+    <!-- Centered Title -->
+
+    <!-- Analytics Table -->
+    <section class="table_wrapper">
+      <table class="analytics_table">
+        <thead>
+          <tr>
+            <th>Short ID</th>
+            <th>Redirect URL</th>
+            <th>Clicks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (urls && urls.length > 0) { %> <% urls.forEach(url => { const
+          shortUrl = `${domain}/${url.shortId}`; // Define short URL here %>
+          <tr>
+            <td class="short_id">
+              <a href="<%= shortUrl %>"><%= shortUrl %></a>
+            </td>
+            <td>
+              <a href="<%= url.redirectURL %>" target="_blank"
+                ><%= url.redirectURL %></a
+              >
+            </td>
+            <td><%= url.visitHistory.length %></td>
+            <td>
+              <button
+                class="copy_button"
+                onclick="copyToClipboard(this, '<%= shortUrl %>')"
+              >
+                Copy URL
+              </button>
+            </td>
+          </tr>
+          <% }) %> <% } else { %>
+          <tr>
+            <td colspan="4">No data available</td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+
+    <script>
+      // Function to copy the URL to clipboard and change button text
+      function copyToClipboard(button, text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            // Change the button text to 'Copied!' and add a class
+            button.textContent = "Copied!";
+            button.classList.add("copied");
+
+            // Reset the text back to 'Copy URL' after 2 seconds
+            setTimeout(() => {
+              button.textContent = "Copy URL";
+              button.classList.remove("copied");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+          });
+      }
+    </script>
+  </body>
 </html>
