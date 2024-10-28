@@ -3,7 +3,8 @@ const express = require("express");
 const staticRoute = express.Router();
 // GET request for home page
 staticRoute.get("/", async (req, res)=>{
-  return res.render("home");
+  const hasUser = req.user !== null? true: false;
+  return res.render("home", {isLogged: hasUser});
 })
 
 

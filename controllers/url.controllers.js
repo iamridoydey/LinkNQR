@@ -24,7 +24,7 @@ async function handleOnPost(req, res) {
 
   // Check if the URL is valid or not
   if (!isValidURL(url)) {
-    return res.render("home", { info: "Not A Valid URL!" });
+    return res.render("home", { info: "Not A Valid URL!"});
   }
 
   // If it is a valid URL, then generate a shortId
@@ -43,7 +43,10 @@ async function handleOnPost(req, res) {
       return res.render("login");
     }
 
-    return res.render("home", { url: `${domain}/${newUrl.shortId}` });
+    return res.render(
+      "home",
+      { url: `${domain}/${newUrl.shortId}`, isLogged: true }
+    );
   } catch (err) {
     console.error("Error occurred while creating short URL:", err); // Log error
     return res.render("home", { info: "Error Creating Short URL" });
@@ -86,7 +89,6 @@ async function redirectToOriginalUrl(req, res) {
 
 async function getAnalytics(req, res) {
   const user = req.user;
-  console.log(user);
   // If the user is not valid
   if (!user) return res.render("/login");
 

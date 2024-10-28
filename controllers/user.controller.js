@@ -48,12 +48,10 @@ async function handleLogin(req, res) {
 
     // Generate a web token and set it to the cookie
     const token = setUser(user);
-    res.cookie("uid", token)
+    res.cookie("uid", token);
     // If user is found, redirect to the homepage or dashboard
-    return res.redirect("/");
-
+    return res.render("home", {isLogged: true});
   } catch (err) {
-
     // Handle any unexpected errors
     return res.render("login", {
       info: "Something Went Wrong!",
@@ -61,4 +59,21 @@ async function handleLogin(req, res) {
   }
 }
 
-module.exports = { createNewUser, handleLogin };
+async function handleLogout(req, res) {
+  console.log("Here in logout")
+  try {
+    // Clear the authentication cookie
+    res.clearCookie("uid");
+
+    // Redirect the user to the login page or homepage
+    return res.render("home", { isLogged: false });
+  } catch (err) {
+    console.log("failed")
+    // Handle any unexpected errors
+    return res.render("login", {
+      info: "Logout Failed! Please try again.",
+    });
+  }
+}
+
+module.exports = { createNewUser, handleLogin, handleLogout};
