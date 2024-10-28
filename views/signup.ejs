@@ -3,12 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkNQR/Signup</title>
+    <link rel="stylesheet" href="/styles/nav.style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/form.style.css" />
+    <title>LinkNQR | Signup</title>
   </head>
   <body>
-    <h2>Signup</h2>
-    <% if(typeof info !== "undefined" && info){ %>
-    <p><%= info %></p>
-    <% } %>
+    
+    <div class="signup_container">
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumbs">
+        <a href="/">Home</a><span class="angle">&gt;</span>  <span class="action">Signup</span>
+      </nav>
+
+      <h2>Signup</h2>
+
+      <!-- Display info if there is an error -->
+      <% if (typeof info !== "undefined" && info) { %>
+      <p class="error_message"><%= info %></p>
+      <% } %>
+
+      <form action="/signup" method="post" class="signup_form">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter Your Name"
+          required
+        />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter Your Email"
+          required
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter Your Password"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- Sign-up Link -->
+      <p class="signup_prompt">
+        Alrady have an account? <a href="/login">login here</a>
+      </p>
+    </div>
   </body>
 </html>

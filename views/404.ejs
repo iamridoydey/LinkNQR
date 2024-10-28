@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Page</title>
-</head>
-<body>
-  <% if (typeof info !== "undefined"){ %>
-    <h3><%= info %></h3>
-    <% } %>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/404.style.css" />
+    <title>404 - Page Not Found</title>
+  </head>
+  <body>
+    <div class="error_container">
+      <% if (typeof info !== "undefined") { %>
+        <h3 class="error_message"><%= info %></h3>
+      <% } %>
+      <h1 class="error_code">404</h1>
+      <h2 class="error_title">Page Not Found</h2>
+      <p class="error_description">
+        Sorry, the page you are looking for does not exist or has been moved.
+      </p>
+      <a href="/" class="error_button">Go Back Home</a>
+    </div>
+  </body>
 </html>

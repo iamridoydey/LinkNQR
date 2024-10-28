@@ -1,0 +1,86 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Error Container */
+.error_container {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #1a2238; /* Slightly darker background */
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Error Message */
+.error_message {
+  background-color: #ff3860; /* Red background for errors */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Error Code (404) */
+.error_code {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #00d1b2; /* Aqua color */
+  margin: 0;
+}
+
+/* Error Title */
+.error_title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin: 10px 0;
+}
+
+/* Error Description */
+.error_description {
+  font-size: 1rem;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+/* Back Home Button */
+.error_button {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1rem;
+  color: white;
+  background-color: #00d1b2; /* Aqua background for button */
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+/* Button Hover Effect */
+.error_button:hover {
+  background-color: #00bfa5; /* Lighter aqua on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .error_code {
+    font-size: 4.5rem;
+  }
+
+  .error_title {
+    font-size: 1.8rem;
+  }
+}

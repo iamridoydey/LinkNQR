@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkNQR</title>
-</head>
-<body>
-  <h2>Welcome to LinkNQR</h2>
-  <% if (typeof url !== "undefined") { %>
-    <h4><%= url %></h4>
-  <% } %>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/nav.style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/home.style.css" />
+
+    <title>LinkNQR</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="menu_wrapper">
+        <nav class="main_menu">
+          <!-- Hamburger Menu Icon -->
+          <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+          <!-- Logo -->
+          <div class="logo"><a class="link" href="">LinkNQR</a></div>
+
+          <!-- Navigation List -->
+          <ul class="nav_list">
+            <li class="nav_item">
+              <a class="link" href="/analytics">Analytics</a>
+            </li>
+            <li class="nav_item user_access">
+              <span><a class="link" href="/login">Login</a></span>
+              <span><a class="link" href="/signup">Signup</a></span>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <main class="main_wrapper">
+        <section class="page_quote">
+          <h2 class="page_title">Feel Tired To Paste Long URL?</h2>
+          <p class="page_paragraph">
+            It will take just a few seconds to shorten your URL. Be cool 😎
+          </p>
+        </section>
+        <section class="form_container">
+          <form action="/" method="post" class="url_form">
+            <label for="url" class="form_label">Paste Your Long URL</label>
+            <input type="text" name="url" placeholder="URL" class="url_input" />
+            <button type="submit" class="submit_button">Get Your Link 🠲</button>
+          </form>
+        </section>
+
+        <section class="created_url_container">
+          <% if (typeof url !== "undefined") { %>
+          <div class="url_display">
+            <input
+              type="text"
+              value="<%= url %>"
+              id="shortenedUrl"
+              readonly
+              class="shortened_url_input"
+            />
+            <button class="copy_button" onclick="copyUrl()">Copy</button>
+          </div>
+          <p class="copy_message" id="copyMessage">URL copied!</p>
+          <% } %>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // JavaScript for Hamburger Menu
+      function toggleMenu() {
+        const navList = document.querySelector(".nav_list");
+        navList.classList.toggle("active");
+      }
+
+      // Javascript for copy
+      function copyUrl() {
+        const urlInput = document.getElementById("shortenedUrl");
+        const copyMessage = document.getElementById("copyMessage");
+
+        // Select and copy the URL text
+        urlInput.select();
+        urlInput.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+
+        // Show the copy message
+        copyMessage.style.display = "block";
+
+        // Hide the copy message after 2 seconds
+        setTimeout(() => {
+          copyMessage.style.display = "none";
+        }, 2000);
+      }
+    </script>
+  </body>
 </html>

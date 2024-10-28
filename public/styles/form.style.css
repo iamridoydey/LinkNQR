@@ -1,0 +1,158 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+}
+
+/* Signup Container */
+.signup_container, .login_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #0f172a;
+}
+
+/* Heading */
+.signup_container h2, .login_container h2 {
+  font-size: 2rem;
+  color: #00d1b2; /* Aqua color for title */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Error Message */
+.error_message {
+  color: #ff3860; /* Red color for errors */
+  margin-bottom: 15px;
+  background-color: #2c2c2c;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Signup Form */
+.signup_form, .login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #1a2238; /* Slightly darker background for form */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Label */
+.signup_form label {
+  font-size: 1rem;
+  color: #e0e0e0; /* Light color for labels */
+}
+
+/* Input Fields */
+.signup_form input[type="text"],
+.signup_form input[type="email"],
+.signup_form input[type="password"],
+.login_form input[type="email"],
+.login_form input[type="password"]  {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #1f2937; /* Dark border */
+  border-radius: 5px;
+  background-color: #1a2238;
+  color: #e0e0e0; /* Light text color */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Input Focus */
+.signup_form input:focus, .login_form input:focus {
+  border-color: #00d1b2; /* Aqua border on focus */
+}
+
+/* Submit Button */
+.signup_form button, .login_form button {
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #00d1b2; /* Aqua background for submit button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.signup_form button:hover, .login_form button:hover {
+  background-color: #00bfa5; /* Brighter Aqua on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup_form, .login_form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .signup_container h2,  .login_container h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Enhanced Breadcrumb Styles */
+.breadcrumbs {
+  position: absolute; /* Position it in the top-left corner */
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  background-color: #f5f5f5; /* Light background for contrast */
+  padding: 8px 12px;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-weight: 500;
+}
+
+.breadcrumbs a {
+  color: #3498db; /* Blue color for links */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs span.action {
+  color: #555; /* Grey color for the current page */
+}
+
+span.angle{
+  color: rgb(12, 170, 194);
+}
+
+
+/* Sign-up Prompt Styles */
+.signup_prompt {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signup_prompt a {
+  color: #007bff; /* Adjust color to match your design */
+  text-decoration: none;
+}
+
+.signup_prompt a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,45 @@
+/* Reset Default Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #557489; /* Light grey background for contrast */
+  color: #333; /* Dark grey text color */
+  margin: 0;
+  line-height: 1.6;
+}
+
+.main_wrapper{
+  margin: auto 20px;
+}
+
+.page_quote{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.page_title{
+  margin-top: 10px;
+  font-size: 2rem;
+  text-align: center;
+  color: #0be7cd;
+}
+
+.page_paragraph{
+  max-width: 500px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #e1ceb3;
+}
+
+
+
+

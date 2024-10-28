@@ -17,6 +17,8 @@ connectMongoDB("mongodb://127.0.0.1:27017/linkNQR");
 const app = express();
 
 // Set Up views (ejs)
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"))
 

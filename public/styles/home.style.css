@@ -1,0 +1,148 @@
+/* Form Container Styles */
+.form_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #0f172a; /* Dark background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+  margin: 20px auto; /* Center with margin */
+  max-width: 600px; /* Limit container width */
+  margin-top: 2rem;
+}
+
+/* Form Styling */
+.url_form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Label Styling */
+.form_label {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Input Field Styling */
+.url_input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #00d1b2; /* Aqua border */
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus Effect for Input */
+.url_input:focus {
+  border-color: #00bfa5; /* Brighter Aqua on focus */
+}
+
+/* Button Styling */
+.submit_button {
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: white;
+  background-color: #00d1b2; /* Aqua background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.submit_button:hover {
+  background-color: #00bfa5; /* Brighter Aqua on hover */
+}
+
+/* Button Focus Effect */
+.submit_button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.5); /* Focus shadow */
+}
+
+/* Style for output of the short url */
+
+/* Container for Created URL */
+.created_url_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #0f172a; /* Dark background matching theme */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+  max-width: 600px; /* Centered with limited width */
+  margin: 0 auto; /* Center align */
+}
+
+/* URL Display Container */
+.url_display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Shortened URL Input Styling */
+.shortened_url_input {
+  flex: 1; /* Take full width */
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #00d1b2; /* Aqua border */
+  border-radius: 5px;
+  background-color: #17233f; /* Dark background for the input */
+  color: #e0e0e0; /* Light text color */
+  outline: none;
+}
+
+/* Copy Button Styling */
+.copy_button {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #00d1b2; /* Aqua background */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.copy_button:hover {
+  background-color: #00bfa5; /* Brighter Aqua on hover */
+}
+
+/* Copy Confirmation Message */
+.copy_message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #00d1b2; /* Aqua color */
+  display: none; /* Hidden by default */
+  animation: fadeInOut 2s ease-in-out; /* Animation to fade in and out */
+}
+
+/* Fade-in-out Animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+

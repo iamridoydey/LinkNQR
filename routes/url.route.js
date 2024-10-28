@@ -7,7 +7,7 @@ const {
 
 const urlRoute = express.Router();
 // Create New URL
-urlRoute.post("/url", handleOnPost)
+urlRoute.post("/", handleOnPost)
 
 // Update Url When it being clicked 
 urlRoute.get("/:shortId", redirectToOriginalUrl);
