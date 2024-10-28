@@ -5,8 +5,8 @@ function setUser(user){
   if(!user) return null;
 
   const payload = {
-    _id: req.user._id,
-    email: req.user.email
+    _id: user._id,
+    email: user.email
   }
 
   return jwt.sign(payload, secretKey)
