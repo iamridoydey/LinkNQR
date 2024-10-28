@@ -1,4 +1,4 @@
-const { init }  = require("@paralleldrive/cuid2")
+const { init } = require("@paralleldrive/cuid2");
 const UrlModel = require("../models/url.model");
 
 // Check whether URL is valid or not
@@ -29,6 +29,7 @@ async function handleOnPost(req, res) {
   const shortId = generateShortId();
 
   try {
+    console.log(req.user);
     // Create a new URL document
     const newUrl = await UrlModel.create({
       shortId,
@@ -43,6 +44,7 @@ async function handleOnPost(req, res) {
 
     return res.render("home", { url: newUrl });
   } catch (err) {
+    console.error("Error occurred while creating short URL:", err); // Log error
     return res.render("home", { info: "Error Creating Short URL" });
   }
 }
@@ -68,26 +70,36 @@ async function redirectToOriginalUrl(req, res) {
       return res.render("404", { info: "Short URL Not Found!" });
     }
 
+    // Ensure the redirect URL is valid before redirecting
+    if (!isValidURL(entry.redirectURL)) {
+      return res.render("404", { info: "Invalid Redirect URL!" });
+    }
+
     // Redirect to the original URL
     return res.redirect(entry.redirectURL);
   } catch (err) {
+    console.error("Error occurred while redirecting:", err); // Log error
     return res.render("404", { info: "Not A Valid URL!" });
   }
-};
+}
 
-async function getAnalytics (req, res){
+async function getAnalytics(req, res) {
   const user = req.user;
   // If the user is not valid
-  if (!user) return res.render("/login");
+  if (!user) return res.render("login");
 
-  // Find all the urls for that user
-  const allUrl = await UrlModel.find({createdBy: user._id})
-
-  return res.render("analytics", { urls: allUrl });
-};
+  try {
+    // Find all the urls for that user
+    const allUrl = await UrlModel.find({ createdBy: user._id });
+    return res.render("analytics", { urls: allUrl });
+  } catch (err) {
+    console.error("Error occurred while fetching analytics:", err); // Log error
+    return res.render("analytics", { info: "Error Fetching Analytics" });
+  }
+}
 
 module.exports = {
   handleOnPost,
   redirectToOriginalUrl,
-  getAnalytics
+  getAnalytics,
 };
