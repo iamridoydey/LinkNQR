@@ -1,21 +1,32 @@
-const {getUser} = require("../services/jwt.auth")
+const { getUser } = require("../services/jwt.auth");
 
+// Authentication for the URL routes
+async function validUser(req, res, next) {
+  try {
+    const token = req.cookies.uid;
 
-// Authentication for the url routes
-async function validUser(req, res, next){
-  const token = req.cookies.uid;
+    // Check if there is a valid token or not
+    if (!token) {
+      console.warn("No token found in cookies.");
+      return res.redirect("/login");
+    }
 
-  // Check is there a valid token or not
-  if (!token) return res.redirect("/login")
+    // Get the user by token
+    const user = getUser(token);
 
-  // Get the user by token
-  const user = getUser(token);
+    // Check whether the user is valid or not
+    if (!user) {
+      console.warn("Invalid user for the provided token.");
+      return res.redirect("/login");
+    }
 
-  // Check whether user is valid or not
-  if (!user) return res.redirect("/login");
-
-  res.user = user;
-  next()
+    // Attach the user to the request object for later use
+    req.user = user;
+    next();
+  } catch (error) {
+    console.error("Error in validUser middleware: ", error.message);
+    return res.redirect("/login");
+  }
 }
 
-module.exports = {validUser}
+module.exports = { validUser };
