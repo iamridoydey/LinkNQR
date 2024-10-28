@@ -13,7 +13,7 @@ const { validUser, checkAuth } = require("./middlewares/user.auth");
 
 // PORT and mongodb connection
 const PORT = 2100;
-connectMongoDB("mongodb://127.0.0.1:27017/linkNQR");
+connectMongoDB(process.env.MONGO_URI);
 
 // Create express App
 const app = express();
@@ -35,6 +35,8 @@ app.use("/", checkAuth, staticRoute);
 app.use("/", userRoute);
 app.use("/", validUser, urlRoute);
 
-app.listen(PORT, () => {
-  console.log(`Server started at http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server started at http://localhost:${PORT}`);
+// });
+
+module.exports = app;
