@@ -23,10 +23,12 @@
             <li class="nav_item">
               <a class="link" href="/urls/analytics">Analytics</a>
             </li>
+            <% if (typeof isLogged === "undefined" || isLogged === false) { %>
             <li class="nav_item user_access">
               <span><a class="link" href="/login">Login</a></span>
               <span><a class="link" href="/signup">Signup</a></span>
             </li>
+            <% } else { %>
             <li class="nav_item user_session">
               <span class="user_icon" onclick="toggleLogout()">👦🏻</span>
               <div class="logout_block" id="logoutBlock">
@@ -35,6 +37,7 @@
                 </form>
               </div>
             </li>
+            <% } %>
           </ul>
         </nav>
       </section>
@@ -51,7 +54,7 @@
             <input
               type="url"
               name="url"
-              placeholder="URL"
+              placeholder="https://example.com/long-url"
               class="url_input"
               required
             />
