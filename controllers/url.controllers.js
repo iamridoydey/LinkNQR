@@ -1,5 +1,7 @@
 const { init } = require("@paralleldrive/cuid2");
 const UrlModel = require("../models/url.model");
+const domain = process.env.DOMAIN ;
+
 
 // Check whether URL is valid or not
 function isValidURL(url) {
@@ -29,7 +31,6 @@ async function handleOnPost(req, res) {
   const shortId = generateShortId();
 
   try {
-    console.log(req.user);
     // Create a new URL document
     const newUrl = await UrlModel.create({
       shortId,
@@ -42,7 +43,7 @@ async function handleOnPost(req, res) {
       return res.render("login");
     }
 
-    return res.render("home", { url: newUrl });
+    return res.render("home", { url: `${domain}/${newUrl.shortId}` });
   } catch (err) {
     console.error("Error occurred while creating short URL:", err); // Log error
     return res.render("home", { info: "Error Creating Short URL" });
