@@ -2,9 +2,9 @@
 .main_menu {
   box-sizing: border-box;
   padding: 20px;
-  background-color: #0f172a; /* Dark navy background */
+  background-color: #0f172a;
   color: white;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,14 +14,14 @@
 .hamburger {
   font-size: 24px;
   cursor: pointer;
-  display: none; /* Hidden by default, shown on mobile */
+  display: none;
 }
 
 /* Navigation List */
 ul.nav_list {
   display: flex;
   align-items: center;
-  list-style: none; /* Remove default bullet points */
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -31,9 +31,52 @@ li.nav_item {
   margin-right: 20px;
 }
 
+/* User Icon and Session */
+.user_session {
+  position: relative;
+  display: inline-block;
+}
+
+.user_icon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.logout_block {
+  width: 120px;
+  padding: 10px;
+  background-color: beige;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* Triangle for the top angle */
+.logout_block::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent beige transparent;
+}
+
+button.logout_btn {
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 /* User Access Links */
 .user_access {
-  display: flex; /* Arrange Login and Signup inline */
+  display: flex;
 }
 
 /* Logo Styling */
@@ -46,71 +89,67 @@ li.nav_item {
 /* Links Styling */
 a.link {
   text-decoration: none;
-  color: #e0e0e0; /* Light grey text */
+  color: #e0e0e0;
   font-size: 1rem;
   transition: color 0.3s;
   padding: 10px 15px;
   border-radius: 5px;
 }
 
-/* Hover Effect */
 a.link:hover {
-  color: #ffffff; /* White on hover */
-  background-color: rgba(255, 255, 255, 0.1); /* Light translucent background */
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
-
-
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .logo {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .hamburger {
+    display: block;
   }
-  /* Base Styles for nav_list */
+
+  .logo{
+    width:100%;
+    text-align: center;
+  }
   .nav_list {
     width: 200px;
     flex-direction: column;
-    justify-content: start;
-    background-color: #17233f; /* Match the nav background */
-    position: absolute; /* Position below the navbar */
-    top: 106px; /* Adjust based on your navbar height */
+    justify-content: center;
+    background-color: #17233f;
+    position: absolute;
+    top: 85px;
     left: 0;
-    box-sizing: border-box;
     padding: 10px;
-
-    /* Hidden by default */
     opacity: 0;
     height: 0;
-    overflow: hidden; /* Hide content when collapsed */
+    overflow: hidden;
     visibility: hidden;
     transition: opacity 0.3s ease, height 0.3s ease;
   }
 
-  /* Show navigation when active */
   .nav_list.active {
-    height: 300px; /* Adjust based on the total height of your nav items */
+    height: 600px;
     opacity: 1;
     visibility: visible;
   }
 
   .user_access {
-    display: flex;
     flex-direction: column;
-    display: flex;
     align-items: center;
     gap: 10px;
   }
 
-  /* Show hamburger icon on mobile */
-  .hamburger {
-    display: block; /* Show hamburger on mobile */
+  li.nav_item {
+    font-size: 2rem;
   }
 
-  /* Adjust margins for mobile */
-  li.nav_item {
-    margin: 10px 0; /* Space out items in mobile view */
+  .logout_block{
+    width: 80px;
+    padding: 0px;
+  }
+
+  .logout_block::before{
+    right: 20px;
+    top: -5px;
   }
 }

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/styles/nav.style.css" />
     <link rel="stylesheet" href="/styles/style.css" />
     <link rel="stylesheet" href="/styles/home.style.css" />
-
     <title>LinkNQR</title>
   </head>
   <body>
@@ -27,6 +26,14 @@
             <li class="nav_item user_access">
               <span><a class="link" href="/login">Login</a></span>
               <span><a class="link" href="/signup">Signup</a></span>
+            </li>
+            <li class="nav_item user_session">
+              <span class="user_icon" onclick="toggleLogout()">👦🏻</span>
+              <div class="logout_block" id="logoutBlock">
+                <form action="/session/logout" method="POST">
+                  <button class="logout_btn" type="submit">Logout</button>
+                </form>
+              </div>
             </li>
           </ul>
         </nav>
@@ -70,31 +77,6 @@
       </main>
     </div>
 
-    <script>
-      // JavaScript for Hamburger Menu
-      function toggleMenu() {
-        const navList = document.querySelector(".nav_list");
-        navList.classList.toggle("active");
-      }
-
-      // Javascript for copy
-      function copyUrl() {
-        const urlInput = document.getElementById("shortenedUrl");
-        const copyMessage = document.getElementById("copyMessage");
-
-        // Select and copy the URL text
-        urlInput.select();
-        urlInput.setSelectionRange(0, 99999); // For mobile devices
-        document.execCommand("copy");
-
-        // Show the copy message
-        copyMessage.style.display = "block";
-
-        // Hide the copy message after 2 seconds
-        setTimeout(() => {
-          copyMessage.style.display = "none";
-        }, 2000);
-      }
-    </script>
+    <script src="/scripts/main.js"></script>
   </body>
 </html>
