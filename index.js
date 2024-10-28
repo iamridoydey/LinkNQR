@@ -13,10 +13,15 @@ const { validUser, checkAuth } = require("./middlewares/user.auth");
 
 // PORT and mongodb connection
 const PORT = 2100;
-connectMongoDB(process.env.MONGO_URI);
 
 // Create express App
 const app = express();
+
+// MongoDB connection
+app.use(async (req, res, next) => {
+  await connectMongoDB(process.env.MONGO_URI);
+  next();
+});
 
 // Set Up views (ejs)
 // Serve static files from the "public" directory
