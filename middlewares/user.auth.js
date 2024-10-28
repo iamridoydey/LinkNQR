@@ -29,4 +29,19 @@ async function validUser(req, res, next) {
   }
 }
 
-module.exports = { validUser };
+async function checkAuth(req, res, next) {
+  try {
+    const token = req.cookies.uid;
+    const user = getUser(token);
+
+    req.user = user;
+    next();
+  } catch (error) {
+    console.error("Error in checkAuth middleware: ", error.message);
+    // Allow unauthenticated access without redirecting
+    req.user = null;
+    next();
+  }
+}
+
+module.exports = { validUser, checkAuth };
